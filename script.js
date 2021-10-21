@@ -28,7 +28,12 @@ const libro4 = new libro(4, "Sobre héroes y tumbas", "Ernesto Sabato", "La Naci
 const libro5 = new libro(5, "La invención de Morel", "Adolfo Bioy Casares", "Booket", 1940, 0);
 
 //ordenar los titulos por año de publicación
-biblioteca.sort(libro.anio);
+biblioteca.sort((a,b) => {
+    if (a.anio == b.anio) {return 0;}
+    if (a.anio > b.anio) {return -1;}
+    if (a.anio < b.anio) {return 1;}
+})
+console.log(biblioteca)
 
 biblioteca.push(libro1);
 biblioteca.push(libro2);
