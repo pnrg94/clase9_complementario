@@ -34,8 +34,8 @@ const mostrarLibros = () => {
                 <p class="card-text">${libro.autor} (${libro.anio}). Editorial ${libro.editorial}</p>
                 <p class="card-text">Cantidad de ejemplares</p>
                 <p class="card-text ejemplares">${libro.ejemplares}</p>
-                <a href="#" class="btn btn-primary" onclick=productosDisponiblesAlRetirar()>Retirar</a>
-                <a href="#" class="btn btn-primary" onclick=productosDisponiblesAlDevolver()>Devolver</a>
+                <input type="button" name="retirar" class="btn btn-primary" id="retirar${libro.id}" value="Retirar">
+                <input type="button" name="devolver" class="btn btn-primary" id="devolver${libro.id}" value="Devolver">
             </div>
         </div>
         `
@@ -43,15 +43,19 @@ const mostrarLibros = () => {
     }
 }
 
-const productosDisponiblesAlRetirar = () => {
-    let stock = document.getElementsByClassName('ejemplares')[0];
+let botonRetirarLibro = document.getElementById("retirar" + libro.id);
+botonRetirarLibro.addEventListener(retirarLibro);
+
+function retirarLibro(){
+    let stock = document.getElementsByClassName('ejemplares');
     let retirar = parseFloat(stock.innerHTML) - 1;
     stock.innerHTML = retirar;
 }
 
+/*
 const productosDisponiblesAlDevolver = () => {
     let stock = document.getElementsByClassName('ejemplares')[0];
     let retirar = parseFloat(stock.innerHTML) + 1;
     stock.innerHTML = retirar;
-}
+}*/
 
