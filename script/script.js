@@ -25,7 +25,7 @@ biblioteca.push(libro3);
 biblioteca.push(libro4);
 biblioteca.push(libro5);
 
-//generador de card en html
+/*/generador de card en html
 const mostrarLibros = () => {
     for (const libro of biblioteca){
         let contenedor = document.createElement('div');
@@ -37,22 +37,33 @@ const mostrarLibros = () => {
                 <p class="card-text">${libro.autor} (${libro.anio}). Editorial ${libro.editorial}</p>
                 <p class="card-text">Cantidad de ejemplares</p>
                 <p class="card-text ejemplares">${libro.ejemplares}</p>
-                <input type="button" name="retirar" class="btn btn-primary" id="retirar${libro.id}" value="Retirar">
+                <input type="button" name="retirar" class="btn btn-primary retirar" id="retirar" value="Retirar">
                 <input type="button" name="devolver" class="btn btn-primary" id="devolver${libro.id}" value="Devolver">
             </div>
         </div>
         `
         document.getElementById('libros').appendChild(contenedor);
     }
-}
+}*/
 
 
 //funcionalidad de boton retirar
-let botonRetirarLibro = document.getElementById("retirar" + libro.id); //creo que el error está en esta linea
-botonRetirarLibro.addEventListener(retirarLibro);
+let botonRetirar = document.getElementById("retirar");
+botonRetirar.addEventListener("click", retirarLibro);
 
 function retirarLibro(){
-    let stock = document.getElementsByClassName('ejemplares');
+    let stock = document.getElementsByClassName('ejemplares')[0];
     let retirar = parseFloat(stock.innerHTML) - 1;
     stock.innerHTML = retirar;
 }
+
+//funcionalidad de boton devolver
+let botonDevolver = document.getElementById("devolver");
+botonDevolver.addEventListener("click", devolverLibro);
+
+function devolverLibro(){
+    let stock = document.getElementsByClassName('ejemplares')[0];
+    let devolver = parseFloat(stock.innerHTML) + 1;
+    stock.innerHTML = devolver;
+}
+
