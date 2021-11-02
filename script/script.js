@@ -1,3 +1,4 @@
+//constructor de libros
 class libro{
     constructor (id, titulo, autor, editorial, anio, ejemplares){
         this.id = id;
@@ -9,6 +10,7 @@ class libro{
     }
 }
 
+//biblioteca
 const biblioteca = [];
 
 const libro1 = new libro(1, "El Aleph", "Jorge Luis Borges", "Zahir", 1949, 5);
@@ -23,6 +25,7 @@ biblioteca.push(libro3);
 biblioteca.push(libro4);
 biblioteca.push(libro5);
 
+//generador de card en html
 const mostrarLibros = () => {
     for (const libro of biblioteca){
         let contenedor = document.createElement('div');
@@ -43,7 +46,9 @@ const mostrarLibros = () => {
     }
 }
 
-let botonRetirarLibro = document.getElementById("retirar" + libro.id);
+
+//funcionalidad de boton retirar
+let botonRetirarLibro = document.getElementById("retirar" + libro.id); //creo que el error está en esta linea
 botonRetirarLibro.addEventListener(retirarLibro);
 
 function retirarLibro(){
@@ -51,11 +56,3 @@ function retirarLibro(){
     let retirar = parseFloat(stock.innerHTML) - 1;
     stock.innerHTML = retirar;
 }
-
-/*
-const productosDisponiblesAlDevolver = () => {
-    let stock = document.getElementsByClassName('ejemplares')[0];
-    let retirar = parseFloat(stock.innerHTML) + 1;
-    stock.innerHTML = retirar;
-}*/
-
